@@ -8,6 +8,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<definitions['posts'][]>
 ) {
-  const { data } = await supabaseClient.from('posts').select('*')
-  res.status(200).json(data)
+  const { data } = await supabaseClient.from<definitions['posts']>('posts').select('*')
+  res.status(200).json(data!)
 }
