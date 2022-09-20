@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import supabaseClient from '../supabase'
+import supabaseClient from '../../service/supabase'
 import { definitions } from '../../types/client';
 
 
