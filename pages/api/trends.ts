@@ -4,7 +4,7 @@ import { saveTrends } from '../../service/aggregator';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Any>
+  res: NextApiResponse<any>
 ) {
   const response = await saveTrends()
   res.status(200).json(response);
