@@ -45,7 +45,7 @@ export default function TrendTabs(props: TrendTabsProps) {
                 <List aria-labelledby="basic-list-demo">
                     {twitterPosts.map((post: any) => (
                         <ListItem key={post.id}>
-                            <Badge badgeContent={post.volume}>
+                            <Badge badgeContent={post.volume} sx={{ border: 1, borderRadius: '10px'}}>
                                 <Card>
                                     <div><a href={getURL(post)} target='_blank' rel="noreferrer">{post.name}</a></div>
                                 </Card>
@@ -58,7 +58,7 @@ export default function TrendTabs(props: TrendTabsProps) {
                 <List aria-labelledby="basic-list-demo">
                     {googlePosts.map((post: any) => (
                         <ListItem key={post.id}>
-                            <Badge badgeContent={post.volume}>
+                            <Badge badgeContent={post.volume} sx={{ border: 1, borderRadius: '10px'}}>
                                 <Card>
                                     <div><a href={getURL(post)} target='_blank' rel="noreferrer">{post.name}</a></div>
                                 </Card>

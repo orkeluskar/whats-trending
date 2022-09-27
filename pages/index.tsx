@@ -1,3 +1,4 @@
+import { Divider, Typography } from '@mui/joy'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import type { NextPage } from 'next'
@@ -6,10 +7,13 @@ import Image from 'next/image'
 import TrendTabs from '../components/tabs'
 import styles from '../styles/Home.module.css'
 import { definitions } from '../types/client'
+import { useColorScheme } from '@mui/joy/styles';
 
 type Post = definitions['posts']
 
 const Home: NextPage = () => {
+  const { mode, setMode } = useColorScheme();
+  setMode('dark')
   const getPosts = async (): Promise<any[]> => {
     const { data } = await axios.get('/api/posts')
     return data;
@@ -27,12 +31,14 @@ const Home: NextPage = () => {
   return (
     <div >
       <Head>
-        <title>Test App</title>
-        <meta name="description" content="Test App" />
+        <title>Whats Trendin</title>
+        <meta name="description" content="Whats Trendin" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
+       <Typography level="h3">What&apos;s Trending</Typography>
+       <Divider sx={{ margin: 1 }}/>
        <TrendTabs posts={data} />
       </main>
 
