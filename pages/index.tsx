@@ -1,4 +1,4 @@
-import { Divider, Typography } from '@mui/joy'
+import { CircularProgress, Divider, Typography } from '@mui/joy'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import type { NextPage } from 'next'
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   const { isLoading, isError, data, error } = useQuery(['posts'], getPosts)
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return <main className={styles.main}><CircularProgress /></main>;
   }
 
   if (isError) {
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <Image src="/logo.svg" alt="Vercel Logo" width={72} height={16} />
+            <Image src="/logo.svg" alt="ok logo" width={72} height={16} />
           </span>
         </a>
       </footer>
