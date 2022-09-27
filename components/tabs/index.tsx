@@ -18,10 +18,11 @@ export default function TrendTabs(props: TrendTabsProps) {
     const googlePosts = posts.filter(p => p.source === 2)
 
     const getURL = (post: any) => {
+        const name = encodeURIComponent(post.name)
         if (post.source === 1) {
-          return `https://twitter.com/search?q=${post.name}`
+          return `https://twitter.com/search?q=${name}`
         }
-        return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${post.name}`
+        return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`
     }
 
     return (
@@ -44,7 +45,7 @@ export default function TrendTabs(props: TrendTabsProps) {
                 <List aria-labelledby="basic-list-demo">
                     {twitterPosts.map((post: any) => (
                         <ListItem key={post.id}>
-                            <Badge badgeContent={post.volume?.toString()}>
+                            <Badge badgeContent={post.volume}>
                                 <Card>
                                     <div><a href={getURL(post)} target='_blank' rel="noreferrer">{post.name}</a></div>
                                 </Card>

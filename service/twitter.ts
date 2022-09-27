@@ -17,7 +17,7 @@ const baseConfig = {
 function stripRequiredFields(tweet: any) {
     return {
         name: tweet.name,
-        volume: tweet.tweet_volume,
+        volume: tweet.tweet_volume?.toLocaleString(),
         source: 1
     }
 }
