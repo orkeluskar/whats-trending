@@ -62,12 +62,6 @@ export default function TrendTabs(props: TrendTabsProps) {
                     <Image height={15} width={15} src={TikTokLogo} alt=''/>
                     </ListItemDecorator>
                 </Tab>
-                <Tab>
-                    <ListItemDecorator>
-                        <YouTubeIcon />
-                    </ListItemDecorator>
-                    Youtube
-                </Tab>
             </TabList>
             <TabPanel value={0}>
                 <Typography level="h5" textAlign={'center'} alignItems='center'>Trending tweets</Typography>
