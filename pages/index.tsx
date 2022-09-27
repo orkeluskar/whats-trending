@@ -1,15 +1,16 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import axios from 'axios';
+import axios from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css';
-import { definitions } from '../types/client';
+import TrendTabs from '../components/tabs'
+import styles from '../styles/Home.module.css'
+import { definitions } from '../types/client'
 
 type Post = definitions['posts']
 
 const Home: NextPage = () => {
-  const getPosts = async (): Promise<Post[]> => {
+  const getPosts = async (): Promise<any[]> => {
     const { data } = await axios.get('/api/posts')
     return data;
   }
@@ -28,19 +29,11 @@ const Home: NextPage = () => {
       <Head>
         <title>Test App</title>
         <meta name="description" content="Test App" />
-        <link rel="icon" href="/logo.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-       {
-        data.map((post) => (
-          <div key={post.id}>
-            <div>{post.id}</div>
-            <a href={post.url} target='_blank' rel="noreferrer">{post.url}</a>
-            <div>{post.created_at}</div>
-          </div>
-        ))
-       }
+       <TrendTabs posts={data} />
       </main>
 
       <footer className={styles.footer}>
