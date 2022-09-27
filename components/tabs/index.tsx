@@ -4,11 +4,15 @@ import {
     Card,
     Badge,
     Typography,
-    Link
-} from '@mui/joy';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import GoogleIcon from '@mui/icons-material/Google';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+    Link,
+    Divider
+} from '@mui/joy'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import YouTubeIcon from '@mui/icons-material/YouTube'
+import GoogleLogo from '../../public/google-logo.svg'
+import NetflixLogo from '../../public/netflix-logo.svg'
+import TikTokLogo from '../../public/tiktok-logo.svg'
+import Image from 'next/image'
 
 export type TrendTabsProps = {
     posts: any[]
@@ -35,24 +39,33 @@ export default function TrendTabs(props: TrendTabsProps) {
             <TabList>
                 <Tab>
                     <ListItemDecorator>
-                        <TwitterIcon />
+                        <TwitterIcon sx={{ color: '#1DA1F2' }}/>
                     </ListItemDecorator>
-                    Twitter
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                        <GoogleIcon />
+                        <Image height={15} width={15} src={GoogleLogo} alt=''/>
                     </ListItemDecorator>
-                    Google
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                        <YouTubeIcon />
+                        <YouTubeIcon sx={{ color: 'red' }}/>
                     </ListItemDecorator>
-                    Youtube
+                </Tab>
+                <Tab>
+                    <ListItemDecorator>
+                    <Image height={15} width={15} src={NetflixLogo} alt=''/>
+                    </ListItemDecorator>
+                </Tab>
+                <Tab>
+                    <ListItemDecorator>
+                    <Image height={15} width={15} src={TikTokLogo} alt=''/>
+                    </ListItemDecorator>
                 </Tab>
             </TabList>
             <TabPanel value={0}>
+                <Typography level="h5" textAlign={'center'} alignItems='center'>Trending tweets</Typography>
+                <Divider sx={{ margin: 1 }}/>
                 <List aria-labelledby="basic-list-demo">
                     {twitterPosts.map((post: any) => (
                         <ListItem key={post.id}>
@@ -68,6 +81,8 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </List>
             </TabPanel>
             <TabPanel value={1}>
+                <Typography level="h5" textAlign={'center'} alignItems='center'>Google daily search trends</Typography>
+                <Divider sx={{ margin: 1 }}/>
                 <List aria-labelledby="basic-list-demo">
                     {googlePosts.map((post: any) => (
                         <ListItem key={post.id}>
@@ -83,6 +98,8 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </List>
             </TabPanel>
             <TabPanel value={2}>
+                <Typography level="h5" textAlign={'center'}>Youtube Trending videos</Typography>
+                <Divider sx={{ margin: 1 }}/>
                 <List aria-labelledby="basic-list-demo">
                     {youtubePosts.map((post: any) => (
                         <ListItem key={post.id}>
@@ -96,6 +113,16 @@ export default function TrendTabs(props: TrendTabsProps) {
                         </ListItem>
                     ))}
                 </List>
+            </TabPanel>
+            <TabPanel value={3}>
+                <Typography level="h5" textAlign={'center'}>Netflix top tv/film</Typography>
+                <Divider sx={{ margin: 1 }}/>
+                <Typography>Coming Soon!</Typography>
+            </TabPanel>
+            <TabPanel value={4}>
+                <Typography level="h5" textAlign={'center'}>TikTok trends</Typography>
+                <Divider sx={{ margin: 1 }}/>
+                <Typography>Coming Soon!</Typography>
             </TabPanel>
       </Tabs>
     )
