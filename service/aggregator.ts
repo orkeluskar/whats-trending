@@ -1,10 +1,14 @@
 import { getTwitterTrends } from './twitter'
-import { getGoogleTrends } from './google'
+import { getGoogleTrends, getYoutubeTrends } from './google'
 import supabaseClient from './supabase'
 
 export async function saveTrends() {
-    const twitterTrends = await getTwitterTrends()
-    const googleTrends = await getGoogleTrends()
+    const [twitterTrends, googleTrends, youtubeTrends] = await Promise.all([
+      getTwitterTrends(),
+      getGoogleTrends(),
+      getYoutubeTrends()
+    ]);
+
 
     // Delete old records
     await supabaseClient
@@ -16,7 +20,8 @@ export async function saveTrends() {
         .from('posts')
         .insert([
             ...twitterTrends,
-            ...googleTrends
+            ...googleTrends,
+            ...youtubeTrends
         ])
 
     return { data, error }
