@@ -1,12 +1,14 @@
 import { getTwitterTrends } from './twitter'
 import { getGoogleTrends, getYoutubeTrends } from './google'
 import supabaseClient from './supabase'
+import redditClient from './reddit';
 
 export async function saveTrends() {
-    const [twitterTrends, googleTrends, youtubeTrends] = await Promise.all([
+    const [twitterTrends, googleTrends, youtubeTrends, redditTrends] = await Promise.all([
       getTwitterTrends(),
       getGoogleTrends(),
-      getYoutubeTrends()
+      getYoutubeTrends(),
+      redditClient.getTrendingSearches()
     ]);
 
 
@@ -21,7 +23,8 @@ export async function saveTrends() {
         .insert([
             ...twitterTrends,
             ...googleTrends,
-            ...youtubeTrends
+            ...youtubeTrends,
+            ...redditTrends
         ])
 
     return { data, error }

@@ -8,6 +8,9 @@ import TrendTabs from '../components/tabs'
 import styles from '../styles/Home.module.css'
 import { definitions } from '../types/client'
 import { useColorScheme } from '@mui/joy/styles';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 type Post = definitions['posts']
 
@@ -37,7 +40,13 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-       <Typography level="h3">What&apos;s Trending</Typography>
+       <Typography level="h3">What&apos;s Trending in US
+        <Tooltip title="Support for other geo(s) coming soon" enterTouchDelay={0} sx={{ marginBottom: '2rem' }}>
+          <IconButton size='small'>
+            <InfoOutlinedIcon />
+          </IconButton>
+        </Tooltip>
+      </Typography>
        <Divider sx={{ margin: 1 }}/>
        <TrendTabs posts={data} />
       </main>

@@ -9,6 +9,7 @@ import {
 } from '@mui/joy'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import YouTubeIcon from '@mui/icons-material/YouTube'
+import RedditIcon from '@mui/icons-material/Reddit';
 import GoogleLogo from '../../public/google-logo.svg'
 import NetflixLogo from '../../public/netflix-logo.svg'
 import TikTokLogo from '../../public/tiktok-logo.svg'
@@ -24,6 +25,7 @@ export default function TrendTabs(props: TrendTabsProps) {
     const twitterPosts = posts.filter(p => p.source === 1)
     const googlePosts = posts.filter(p => p.source === 2)
     const youtubePosts = posts.filter(p => p.source === 3)
+    const redditPosts = posts.filter(p => p.source === 4)
 
     const getURL = (post: any) => {
         const name = encodeURIComponent(post.name)
@@ -31,11 +33,17 @@ export default function TrendTabs(props: TrendTabsProps) {
             case 1: return `https://twitter.com/search?q=${name}`
             case 2: return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`
             case 3: return `https://www.youtube.com/results?search_query=${name}`
+            case 4: return `https://www.reddit.com${post.name}`
         }
     }
 
+    const getName = (name: any) => {
+        let title = name.split('/')[5].replaceAll('_', ' ')
+        return title.charAt(0).toUpperCase() + title.slice(1)
+    }
+
     return (
-        <Tabs aria-label="Icon tabs" defaultValue={0}>
+        <Tabs aria-label="Icon tabs" defaultValue={0} sx={{ width: '75vw' }}>
             <TabList>
                 <Tab>
                     <ListItemDecorator>
@@ -50,6 +58,11 @@ export default function TrendTabs(props: TrendTabsProps) {
                 <Tab>
                     <ListItemDecorator>
                         <YouTubeIcon sx={{ color: 'red' }}/>
+                    </ListItemDecorator>
+                </Tab>
+                <Tab>
+                    <ListItemDecorator>
+                        <RedditIcon sx={{ color: 'red' }}/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
@@ -115,11 +128,28 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </List>
             </TabPanel>
             <TabPanel value={3}>
+                <Typography level="h5" textAlign={'center'}>Reddit hot posts</Typography>
+                <Divider sx={{ margin: 1 }}/>
+                <List aria-labelledby="basic-list-demo">
+                    {redditPosts.map((post: any) => (
+                        <ListItem key={post.id}>
+                            <Link target='_blank' rel='noreferrer' href={getURL(post)}>
+                                <Badge badgeContent={post.volume} sx={{ border: 1, borderRadius: '10px', maxWidth: '70vw'}}>
+                                    <Card row>
+                                        <Typography>{getName(post.name)}</Typography>
+                                    </Card>
+                                </Badge>
+                            </Link>
+                        </ListItem>
+                    ))}
+                </List>
+            </TabPanel>
+            <TabPanel value={4}>
                 <Typography level="h5" textAlign={'center'}>Netflix top tv/film</Typography>
                 <Divider sx={{ margin: 1 }}/>
                 <Typography>Coming Soon!</Typography>
             </TabPanel>
-            <TabPanel value={4}>
+            <TabPanel value={5}>
                 <Typography level="h5" textAlign={'center'}>TikTok trends</Typography>
                 <Divider sx={{ margin: 1 }}/>
                 <Typography>Coming Soon!</Typography>
