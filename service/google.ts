@@ -11,10 +11,17 @@ function formatResponse(data: string): any {
     })
 }
 
-function stripRequiredFields(item: any): any {
+function getVolume(item: any, rank: number) {
+    if (item?.statistics?.viewCount) {
+        return parseInt(item.statistics.viewCount).toLocaleString()
+    }
+    return `#${rank}`
+}
+
+function stripRequiredFields(item: any, index: number): any {
     return {
         name: item.snippet.title,
-        volume: parseInt(item.statistics.viewCount).toLocaleString(),
+        volume: getVolume(item, index + 1),
         source: 3
     }
 }
@@ -30,26 +37,36 @@ export async function getYoutubeTrends() {
     const baseUrl = process.env.GOOGLE_API_URL || ''
     const url = `${baseUrl}/youtube/v3/videos`
     
-    const params = new URLSearchParams();
-    params.append('part', 'statistics');
-    params.append('part', 'snippet');
+    const params = new URLSearchParams()
+    params.append('part', 'statistics')
+    params.append('part', 'snippet')
     params.append('chart', 'mostPopular')
     params.append('regionCode', 'US')
+    params.append('maxResults', '50')
     params.append('key', process.env.GOOGLE_API_KEY || '')
-    params.append('pageToken', '')
 
     const config = {
         params
     }
 
     let { data } = await axios.get(url, config)
-    let result = [...data.items]
+    return data.items.map(stripRequiredFields)
+}
 
-    if (data.nextPageToken) {
-        config.params.set('pageToken', data.nextPageToken)
-        const resp = await axios.get(url, config)
-        result = [...result, ...resp.data.items]
+export async function getYoutubeTopMusicVideos() {
+    const baseUrl = process.env.GOOGLE_API_URL || ''
+    const url = `${baseUrl}/youtube/v3/playlistItems`
+    const params = new URLSearchParams()
+    params.append('part', 'snippet')
+    params.append('part', 'contentDetails')
+    params.append('key', process.env.GOOGLE_API_KEY || '')
+    params.append('playlistId', 'RDCLAK5uy_kmPRjHDECIcuVwnKsx2Ng7fyNgFKWNJFs')
+    params.append('maxResults', '50')
+
+    const config = {
+        params
     }
 
-    return result.map(stripRequiredFields)
+    let { data } = await axios.get(url, config)
+    return data.items.map(stripRequiredFields)
 }
