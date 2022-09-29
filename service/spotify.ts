@@ -1,19 +1,16 @@
 import SpotifyWebApi from 'spotify-web-api-node'
 
-class Spotify {
-    spotifyClient: SpotifyWebApi
+export default class Spotify {
+    client: SpotifyWebApi
     accessToken: any;
-    constructor() {
-        this.spotifyClient = new SpotifyWebApi({
-            clientId: process.env.SPOTIFY_CLIENT_ID,
-            clientSecret: process.env.SPOTIFY_CLIENT_SECRET
-        })
+    constructor(client: SpotifyWebApi) {
+        this.client = client
     }
 
     async refreshToken() {
-        const creds = await this.spotifyClient.clientCredentialsGrant()
+        const creds = await this.client.clientCredentialsGrant()
         this.accessToken = creds.body.access_token
-        this.spotifyClient.setAccessToken(this.accessToken)
+        this.client.setAccessToken(this.accessToken)
     }
 
     private formatResponse(item: any, index: number) {
@@ -30,13 +27,9 @@ class Spotify {
         if (!this.accessToken) {
             await this.refreshToken()
         }
-        const { body } = await this.spotifyClient.getPlaylist(playListId, {
+        const { body } = await this.client.getPlaylist(playListId, {
             fields: 'tracks.items(track(name,id))'
         })
         return body.tracks.items.map(this.formatResponse)
     }
 }
-
-const spotifyClient = new Spotify()
-
-export default spotifyClient

@@ -2,7 +2,15 @@ import { getTwitterTrends } from "./twitter";
 import { getGoogleTrends, getYoutubeTrends } from "./google";
 import supabaseClient from "./supabase";
 import redditClient from "./reddit";
-import spotifyClient from "./spotify";
+import SpotifyWebApi from 'spotify-web-api-node'
+import Spotify from "./spotify";
+
+const _spotifyClient = new SpotifyWebApi({
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET
+})
+
+const spotifyService = new Spotify(_spotifyClient)
 
 export async function saveTrends() {
   const [
@@ -16,7 +24,7 @@ export async function saveTrends() {
     getGoogleTrends(),
     getYoutubeTrends(),
     redditClient.getTrendingSearches(),
-    spotifyClient.getTopTrending({}),
+    spotifyService.getTopTrending({}),
   ]);
 
   // Delete old records
