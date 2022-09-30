@@ -2,7 +2,6 @@ import { CircularProgress, Divider, Typography } from '@mui/joy'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
 import TrendTabs from '../components/tabs'
 import styles from '../styles/Home.module.css'
@@ -33,11 +32,6 @@ const Home: NextPage = () => {
 
   return (
     <div >
-      <Head>
-        <title>Whats Trendin</title>
-        <meta name="description" content="Whats Trendin" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
       <main className={styles.main}>
        <Typography level="h3">What&apos;s Trending in US
