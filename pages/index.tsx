@@ -9,7 +9,7 @@ import { useColorScheme } from '@mui/joy/styles';
 
 import Heading from '../components/heading';
 
-export async function getStaticProps(context: NextPageContext) {
+export async function getServerSideProps(context: NextPageContext) {
   const getPosts = async (): Promise<any[]> => {
     const url = process.env.API_URL;
     const { data } = await axios.get(`${url}/api/posts`)
@@ -18,8 +18,7 @@ export async function getStaticProps(context: NextPageContext) {
   return {
     props: {
       data: await getPosts()
-    },
-    revalidate: 60
+    }
   }
 }
 
