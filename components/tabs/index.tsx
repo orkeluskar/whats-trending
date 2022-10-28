@@ -15,7 +15,6 @@ import GoogleLogo from '../../public/google-logo.svg'
 import NetflixLogo from '../../public/netflix-logo.svg'
 import TikTokLogo from '../../public/tiktok-logo.svg'
 import SpotifyLogo from '../../public/spotify-logo.svg'
-import Image from 'next/image'
 
 export type TrendTabsProps = {
     posts: any[]
@@ -63,7 +62,7 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                        <Image height={15} width={15} src={GoogleLogo} alt=''/>
+                        <img height={15} width={15} src={GoogleLogo} alt=''/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
@@ -78,17 +77,17 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                    <Image height={15} width={15} src={SpotifyLogo} alt=''/>
+                    <img height={15} width={15} src={SpotifyLogo} alt=''/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                    <Image height={15} width={15} src={NetflixLogo} alt=''/>
+                    <img height={15} width={15} src={NetflixLogo} alt=''/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                    <Image height={15} width={15} src={TikTokLogo} alt=''/>
+                    <img height={15} width={15} src={TikTokLogo} alt=''/>
                     </ListItemDecorator>
                 </Tab>
             </TabList>
