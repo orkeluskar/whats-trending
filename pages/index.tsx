@@ -8,18 +8,18 @@ import { useColorScheme } from '@mui/joy/styles';
 
 import Heading from '../components/heading';
 
-export async function getServerSideProps(context: NextPageContext) {
-  const getPosts = async (): Promise<any[]> => {
-    const url = process.env.API_URL;
-    const { data } = await axios.get(`${url}/api/posts`)
-    return data;
-  }
-  return {
-    props: {
-      data: await getPosts()
-    }
-  }
-}
+// export async function getServerSideProps(context: NextPageContext) {
+//   const getPosts = async (): Promise<any[]> => {
+//     const url = process.env.API_URL;
+//     const { data } = await axios.get(`${url}/api/posts`)
+//     return data;
+//   }
+//   return {
+//     props: {
+//       data: await getPosts()
+//     }
+//   }
+// }
 
 export type HomePageType = {
   data: any
