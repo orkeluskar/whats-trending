@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { deepmerge } from '@mui/utils';
 import { experimental_extendTheme as extendMuiTheme } from '@mui/material/styles';
 import {
@@ -16,15 +15,11 @@ const joyTheme = extendJoyTheme();
 const theme = deepmerge(muiTheme, joyTheme);
 
 
-const queryClient = new QueryClient()
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <CssVarsProvider theme={theme}>
-        <Component {...pageProps} />
-      </CssVarsProvider>
-    </QueryClientProvider>
+    <CssVarsProvider theme={theme}>
+      <Component {...pageProps} />
+    </CssVarsProvider>
   )
 }
 

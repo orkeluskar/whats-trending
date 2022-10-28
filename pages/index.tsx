@@ -1,35 +1,36 @@
-import { CircularProgress, Divider, Typography } from '@mui/joy'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import {  Divider } from '@mui/joy'
 import axios from 'axios'
-import type { NextPage } from 'next'
+import type {  NextPageContext } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import TrendTabs from '../components/tabs'
 import styles from '../styles/Home.module.css'
-import { definitions } from '../types/client'
 import { useColorScheme } from '@mui/joy/styles';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 
-type Post = definitions['posts']
+import Heading from '../components/heading';
 
-const Home: NextPage = () => {
-  const { mode, setMode } = useColorScheme();
-  setMode('dark')
+export async function getStaticProps(context: NextPageContext) {
   const getPosts = async (): Promise<any[]> => {
-    const { data } = await axios.get('/api/posts')
+    const url = process.env.API_URL;
+    const { data } = await axios.get(`${url}/api/posts`)
     return data;
   }
-  const { isLoading, isError, data, error } = useQuery(['posts'], getPosts)
-
-  if (isLoading) {
-    return <main className={styles.main}><CircularProgress /></main>;
+  return {
+    props: {
+      data: await getPosts()
+    },
+    revalidate: 60
   }
+}
 
-  if (isError) {
-    return <div>Error fetching posts: ${JSON.stringify(error)}</div>
-  }
+export type HomePageType = {
+  data: any
+}
+
+const Home = (props : HomePageType) => {
+  const { data } = props;
+  const { mode, setMode } = useColorScheme();
+  setMode('dark')
 
   return (
     <div >
@@ -40,13 +41,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-       <Typography level="h3">What&apos;s Trending in US
-        <Tooltip title="Support for other geo(s) coming soon" enterTouchDelay={0} sx={{ marginBottom: '2rem' }}>
-          <IconButton size='small'>
-            <InfoOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-      </Typography>
+       <Heading />
        <Divider sx={{ margin: 1 }}/>
        <TrendTabs posts={data} />
       </main>
