@@ -38,20 +38,20 @@ const Home = (props : HomePageType) => {
         <link rel="icon" href="/favicon.ico" />
 
         <title>WhatsTrending - Trending Updates from Social Medias</title>
-        <meta name="title" content="WhatsTrending - Trending Updates from Social Medias"/>
-        <meta name="description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google Search, Spotify, Reddit, Netflix, and TikTok on our site. Explore popular hashtags, viral videos, trending music, hot topics, and more in one place. Never miss a beat and join the conversation with our real-time updates.!"/>
+        <meta name="title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
+        <meta name="description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
 
-        <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://metatags.io/"/>
-        <meta property="og:title" content="WhatsTrending - Trending Updates from Social Medias"/>
-        <meta property="og:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google Search, Spotify, Reddit, Netflix, and TikTok on our site. Explore popular hashtags, viral videos, trending music, hot topics, and more in one place. Never miss a beat and join the conversation with our real-time updates.!"/>
-        <meta property="og:image" content="/preview.png"/>
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:url" content="https://metatags.io/"></meta>
+        <meta property="og:title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
+        <meta property="og:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
+        <meta property="og:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png"></meta>
 
-        <meta property="twitter:card" content="summary_large_image"/>
-        <meta property="twitter:url" content="https://metatags.io/"/>
-        <meta property="twitter:title" content="WhatsTrending - Trending Updates from Social Medias"/>
-        <meta property="twitter:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google Search, Spotify, Reddit, Netflix, and TikTok on our site. Explore popular hashtags, viral videos, trending music, hot topics, and more in one place. Never miss a beat and join the conversation with our real-time updates.!"/>
-        <meta property="twitter:image" content="/preview.png"></meta>
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:url" content="https://metatags.io/"></meta>
+        <meta property="twitter:title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
+        <meta property="twitter:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
+        <meta property="twitter:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png"></meta>
       </Head>
 
       <main className={styles.main}>
