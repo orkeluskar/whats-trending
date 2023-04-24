@@ -29,15 +29,28 @@ export type HomePageType = {
 
 const Home = (props : HomePageType) => {
   const { data } = props;
-  const { mode, setMode } = useColorScheme();
+  const { setMode } = useColorScheme();
   setMode('dark')
 
   return (
     <div >
       <Head>
-        <title>Whats Trendin</title>
-        <meta name="description" content="Whats Trendin" />
         <link rel="icon" href="/favicon.ico" />
+
+        <title>WhatsTrending - Trending Updates from Social Medias</title>
+        <meta name="title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
+        <meta name="description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
+
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:url" content="https://whats-trending.vercel.app"></meta>
+        <meta property="og:title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
+        <meta property="og:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
+        <meta property="og:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
+
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
+        <meta property="twitter:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
+        <meta property="twitter:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
       </Head>
 
       <main className={styles.main}>
@@ -48,7 +61,7 @@ const Home = (props : HomePageType) => {
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://omkarkeluskar.com"
           target="_blank"
           rel="noopener noreferrer"
         >
