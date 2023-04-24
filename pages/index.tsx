@@ -35,9 +35,23 @@ const Home = (props : HomePageType) => {
   return (
     <div >
       <Head>
-        <title>Whats Trendin</title>
-        <meta name="description" content="Whats Trendin" />
         <link rel="icon" href="/favicon.ico" />
+
+        <title>WhatsTrending - Trending Updates from Social Medias</title>
+        <meta name="title" content="WhatsTrending - Trending Updates from Social Medias"/>
+        <meta name="description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google Search, Spotify, Reddit, Netflix, and TikTok on our site. Explore popular hashtags, viral videos, trending music, hot topics, and more in one place. Never miss a beat and join the conversation with our real-time updates.!"/>
+
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="https://metatags.io/"/>
+        <meta property="og:title" content="WhatsTrending - Trending Updates from Social Medias"/>
+        <meta property="og:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google Search, Spotify, Reddit, Netflix, and TikTok on our site. Explore popular hashtags, viral videos, trending music, hot topics, and more in one place. Never miss a beat and join the conversation with our real-time updates.!"/>
+        <meta property="og:image" content="/preview.png"/>
+
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content="https://metatags.io/"/>
+        <meta property="twitter:title" content="WhatsTrending - Trending Updates from Social Medias"/>
+        <meta property="twitter:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google Search, Spotify, Reddit, Netflix, and TikTok on our site. Explore popular hashtags, viral videos, trending music, hot topics, and more in one place. Never miss a beat and join the conversation with our real-time updates.!"/>
+        <meta property="twitter:image" content="/preview.png"></meta>
       </Head>
 
       <main className={styles.main}>
