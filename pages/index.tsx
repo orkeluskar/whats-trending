@@ -42,13 +42,13 @@ const Home = (props : HomePageType) => {
         <meta name="description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
 
         <meta property="og:type" content="website"></meta>
-        <meta property="og:url" content="https://metatags.io/"></meta>
+        <meta property="og:url" content="https://whats-trending.vercel.app"></meta>
         <meta property="og:title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
         <meta property="og:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
         <meta property="og:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png"></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
-        <meta property="twitter:url" content="https://metatags.io/"></meta>
+        <meta property="twitter:url" content="https://whats-trending.vercel.app"></meta>
         <meta property="twitter:title" content="WhatsTrending - Trending Updates from Social Medias"></meta>
         <meta property="twitter:description" content="Stay up-to-date with the latest trends from Twitter, YouTube, Google, Spotify, Reddit, Netflix, and TikTok. Explore popular hashtags, viral videos, trending music, and more!"></meta>
         <meta property="twitter:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png"></meta>
