@@ -52,6 +52,8 @@ const Home = (props : HomePageType) => {
         <meta property="twitter:description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
         <meta property="twitter:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
         <link rel="canonical" href="https://whats-trending.vercel.app/" />
+
+        <meta name="google-site-verification" content="plNjT22lnKm9msdZWw8yPXGwPh81snTSfML-zPgRLqQ" />
       </Head>
 
       <main className={styles.main}>
