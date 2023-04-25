@@ -63,7 +63,7 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                        <Image height={15} width={15} src={GoogleLogo} alt=''/>
+                        <Image height={15} width={15} src={GoogleLogo} alt='Google logo'/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
@@ -78,17 +78,17 @@ export default function TrendTabs(props: TrendTabsProps) {
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                    <Image height={15} width={15} src={SpotifyLogo} alt=''/>
+                    <Image height={15} width={15} src={SpotifyLogo} alt='Spotify logo'/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                    <Image height={15} width={15} src={NetflixLogo} alt=''/>
+                    <Image height={15} width={15} src={NetflixLogo} alt='Netflix logo'/>
                     </ListItemDecorator>
                 </Tab>
                 <Tab>
                     <ListItemDecorator>
-                    <Image height={15} width={15} src={TikTokLogo} alt=''/>
+                    <Image height={15} width={15} src={TikTokLogo} alt='Tiktok logo'/>
                     </ListItemDecorator>
                 </Tab>
             </TabList>
