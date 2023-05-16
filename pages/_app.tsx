@@ -17,7 +17,7 @@ const theme = deepmerge(muiTheme, joyTheme);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CssVarsProvider theme={theme}>
+    <CssVarsProvider theme={theme} defaultMode={'dark'}>
       <Component {...pageProps} />
     </CssVarsProvider>
   )

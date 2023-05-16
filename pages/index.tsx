@@ -5,7 +5,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import TrendTabs from '../components/tabs'
 import styles from '../styles/Home.module.css'
-import { useColorScheme } from '@mui/joy/styles';
 
 import Heading from '../components/heading';
 
@@ -29,8 +28,6 @@ export type HomePageType = {
 
 const Home = (props : HomePageType) => {
   const { data } = props;
-  const { setMode } = useColorScheme();
-  setMode('dark')
 
   return (
     <div >
