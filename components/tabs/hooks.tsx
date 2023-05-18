@@ -7,12 +7,14 @@ import NetflixLogo from '../../public/netflix-logo.svg'
 import TikTokLogo from '../../public/tiktok-logo.svg'
 import SpotifyLogo from '../../public/spotify-logo.svg'
 import Image from 'next/image'
+import CONSTANTS from '../../utils/constants';
 
 type Post = {
     id: number;
     name: string;
     source: number;
     volume: number;
+    post_url: string;
 };
 
 const usePostData = (posts: Post[]) => {
@@ -36,13 +38,19 @@ const usePostData = (posts: Post[]) => {
     const getURL = (post: Post) => {
         const name = encodeURIComponent(post.name);
         switch (post.source) {
-            case 1: return `https://twitter.com/search?q=${name}`;
-            case 2: return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`;
-            case 3: return `https://www.youtube.com/results?search_query=${name}`;
-            case 4: return `https://www.reddit.com${post.name}`;
-            case 5:
+            case CONSTANTS.SOURCE.TWITTER:
+                return `https://twitter.com/search?q=${name}`;
+            case CONSTANTS.SOURCE.GOOGLE:
+                return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`;
+            case CONSTANTS.SOURCE.YOUTUBE:
+                return `https://www.youtube.com/results?search_query=${name}`;
+            case CONSTANTS.SOURCE.REDDIT:
+                return `https://www.reddit.com${post.name}`;
+            case CONSTANTS.SOURCE.SPOTIFY:
                 let trackId = post.name.split('_')[0];
                 return `https://open.spotify.com/track/${trackId}`;
+            case CONSTANTS.SOURCE.NETFLIX:
+                return post.post_url
             default:
                 return '#';
         }

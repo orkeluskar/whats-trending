@@ -1,30 +1,36 @@
 import Axios from "../utils/Axios";
+import CONSTANTS from "../utils/constants";
 
 export class Netflix {
     constructor() {
 
     }
 
-    formatResponse({ data } : { data: DataType}) {
+    formatResponse({ data }: { data: DataType }, type: string) {
         if (data.weeklyCountryRanks) {
-            const weeklyCountryRanks = data.weeklyCountryRanks.map(item => {
-                item.vertical = data.weeklyBoxartUrls[item.id].vertical
-                return item
-            });
-            return {
-                data: weeklyCountryRanks
-            } 
+            return data.weeklyCountryRanks.map((item, index) => ({
+                name: item.name,
+                source: CONSTANTS.SOURCE.NETFLIX,
+                volume: `#${index + 1}`,
+
+                media_url: data.weeklyBoxartUrls[item.id].vertical,
+                post_url: `https://www.netflix.com/watch/${item.id}`,
+                type
+            }))
         }
-        return {
-            data: []
-        } 
+        return []
     }
 
     public async getTopTenFilms() {
         const url = `https://top10.netflix.com/_next/data/ua8sHU6xqsMihYXnnjqbh/united-states/films.json`
         const { data, error } = await Axios.get<WeeklyTopTenResponse>(url)
-        if (error) return { data: [] }
-        return this.formatResponse(data.pageProps);
+        return this.formatResponse(data.pageProps, 'film');
+    }
+
+    public async getTopTenShows() {
+        const url = `https://top10.netflix.com/_next/data/ua8sHU6xqsMihYXnnjqbh/united-states/tv.json`
+        const { data, error } = await Axios.get<WeeklyTopTenResponse>(url)
+        return this.formatResponse(data.pageProps, 'tv');
     }
 }
 

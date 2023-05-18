@@ -6,6 +6,7 @@ import {
 import useMediaQuery from '@mui/material/useMediaQuery';
 import TabPanelContent from './tabPanelContent';
 import usePostData from './hooks';
+import CONSTANTS from '../../utils/constants';
 
 export type TrendTabsProps = {
     posts: any[]
@@ -16,11 +17,12 @@ export default function TrendTabs(props: TrendTabsProps) {
     const isDesktop = useMediaQuery('(min-width:500px)');
 
     // Then you can access specific post groups like this:
-    const twitterPosts = postGroups[1];
-    const googlePosts = postGroups[2];
-    const youtubePosts = postGroups[3];
-    const redditPosts = postGroups[4];
-    const spotifyTracks = postGroups[5];
+    const twitterPosts = postGroups[CONSTANTS.SOURCE.TWITTER];
+    const googlePosts = postGroups[CONSTANTS.SOURCE.GOOGLE];
+    const youtubePosts = postGroups[CONSTANTS.SOURCE.YOUTUBE];
+    const redditPosts = postGroups[CONSTANTS.SOURCE.REDDIT];
+    const spotifyTracks = postGroups[CONSTANTS.SOURCE.SPOTIFY];
+    const netflixTops = postGroups[CONSTANTS.SOURCE.NETFLIX]
 
     return (
         <Tabs aria-label="Icon tabs" defaultValue={0} size='sm' sx={{ width: isDesktop ? '75vw' : '90vw' }}>
@@ -49,9 +51,7 @@ export default function TrendTabs(props: TrendTabsProps) {
                 <TabPanelContent posts={spotifyTracks} title='Spotify top hits' getURL={getURL} getName={getTrackName} />
             </TabPanel>
             <TabPanel value={5}>
-                <Typography level="h5" textAlign={'center'}>Netflix top tv/film</Typography>
-                <Divider sx={{ margin: 1 }} />
-                <Typography>Coming Soon!</Typography>
+                <TabPanelContent posts={netflixTops} title='Netflix top' getURL={getURL} getName={p => p} />
             </TabPanel>
             <TabPanel value={6}>
                 <Typography level="h5" textAlign={'center'}>TikTok trends</Typography>
