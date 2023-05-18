@@ -1,4 +1,5 @@
 import axios from 'axios'
+import CONSTANTS from '../utils/constants'
 
 function formatResponse(data: string): any {
     const response = JSON.parse(data.replace(`)]}',\n`, ''))
@@ -6,7 +7,7 @@ function formatResponse(data: string): any {
         return {
             name: trend.title,
             volume: trend.formattedTraffic,
-            source: 2
+            source: CONSTANTS.SOURCE.GOOGLE
         }
     })
 }

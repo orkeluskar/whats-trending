@@ -1,4 +1,5 @@
 import axios from 'axios'
+import CONSTANTS from '../utils/constants'
 
 const TWITTER_API_URL = process.env.TWITTER_API_URL
 // info: https://developer.twitter.com/en/docs/twitter-api/v1/trends/trends-for-location/api-reference/get-trends-place
@@ -18,7 +19,7 @@ function stripRequiredFields(tweet: any) {
     return {
         name: tweet.name,
         volume: tweet.tweet_volume?.toLocaleString(),
-        source: 1
+        source: CONSTANTS.SOURCE.TWITTER
     }
 }
 
