@@ -36,17 +36,17 @@ const Home = (props : HomePageType) => {
 
         <title>Trendzy - Trending Updates from Social Medias</title>
         <meta name="title" content="Trendzy: Top Stories & News - Stay Updated Worldwide"></meta>
-        <meta name="description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
+        <meta name="description" content="Discover trending topics, news, and stories from around the world with Trendzy – your go-to source for real-time updates and insights."></meta>
 
         <meta property="og:type" content="website"></meta>
         <meta property="og:url" content="https://whats-trending.vercel.app"></meta>
         <meta property="og:title" content="Trendzy: Top Stories & News - Stay Updated Worldwide"></meta>
-        <meta property="og:description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
+        <meta property="og:description" content="Discover trending topics, news, and stories from around the world with Trendzy – your go-to source for real-time updates and insights."></meta>
         <meta property="og:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta property="twitter:title" content="Trendzy: Top Stories & News - Stay Updated Worldwide"></meta>
-        <meta property="twitter:description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
+        <meta property="twitter:description" content="Discover trending topics, news, and stories from around the world with Trendzy – your go-to source for real-time updates and insights."></meta>
         <meta property="twitter:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
         <link rel="canonical" href="https://whats-trending.vercel.app/" />
 
