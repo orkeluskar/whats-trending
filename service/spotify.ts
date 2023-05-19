@@ -15,7 +15,6 @@ export default class Spotify {
     }
 
     private formatResponse(item: any, index: number) {
-        console.log(item)
         return {
             name: `${item.track.id}_${item.track.name}`,
             volume: `#${index + 1}`,
