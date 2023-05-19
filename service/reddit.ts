@@ -1,4 +1,5 @@
 import axios from "axios"
+import CONSTANTS from "../utils/constants"
 
 export class Reddit {
     constructor() {
@@ -12,7 +13,7 @@ export class Reddit {
         return {
             name: `/r/${subreddit}/comments/${id}/${formattedTitle}`,
             volume: data.score?.toLocaleString(),
-            source: 4
+            source: CONSTANTS.SOURCE.REDDIT
         }
     }
 

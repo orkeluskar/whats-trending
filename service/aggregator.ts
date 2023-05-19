@@ -4,6 +4,7 @@ import supabaseClient from "./supabase";
 import redditClient from "./reddit";
 import SpotifyWebApi from 'spotify-web-api-node'
 import Spotify from "./spotify";
+import netflixClient from "./netflix";
 
 const _spotifyClient = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -19,12 +20,16 @@ export async function saveTrends() {
     youtubeTrends,
     redditTrends,
     spotifyTrends,
+    netflixFilmTrends,
+    netflixShowTrends
   ] = await Promise.all([
     getTwitterTrends(),
     getGoogleTrends(),
     getYoutubeTrends(),
     redditClient.getTrendingSearches(),
     spotifyService.getTopTrending({}),
+    netflixClient.getTopTenFilms(),
+    netflixClient.getTopTenShows()
   ]);
 
   // Delete old records
@@ -41,6 +46,8 @@ export async function saveTrends() {
       ...youtubeTrends,
       ...redditTrends,
       ...spotifyTrends,
+      ...netflixFilmTrends,
+      ...netflixShowTrends
     ]);
 
   return { data, error };

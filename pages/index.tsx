@@ -1,59 +1,98 @@
-import { CircularProgress, Divider, Typography } from '@mui/joy'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import {  Divider } from '@mui/joy'
 import axios from 'axios'
-import type { NextPage } from 'next'
+import type {  NextPageContext } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import TrendTabs from '../components/tabs'
 import styles from '../styles/Home.module.css'
-import { definitions } from '../types/client'
-import { useColorScheme } from '@mui/joy/styles';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 
-type Post = definitions['posts']
+import Heading from '../components/heading';
 
-const Home: NextPage = () => {
-  const { mode, setMode } = useColorScheme();
-  setMode('dark')
+export async function getStaticProps(context: NextPageContext) {
   const getPosts = async (): Promise<any[]> => {
-    const { data } = await axios.get('/api/posts')
+    const url = process.env.API_URL;
+    const { data } = await axios.get(`${url}/api/posts`)
     return data;
   }
-  const { isLoading, isError, data, error } = useQuery(['posts'], getPosts)
-
-  if (isLoading) {
-    return <main className={styles.main}><CircularProgress /></main>;
+  return {
+    props: {
+      data: await getPosts()
+    },
+    revalidate: 60
   }
+}
 
-  if (isError) {
-    return <div>Error fetching posts: ${JSON.stringify(error)}</div>
-  }
+export type HomePageType = {
+  data: any
+}
+
+const Home = (props : HomePageType) => {
+  const { data } = props;
 
   return (
     <div >
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+
+        <title>Trendzy - Trending Updates from Social Medias</title>
+        <meta name="title" content="Trendzy: Top Stories & News - Stay Updated Worldwide"></meta>
+        <meta name="description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
+
+        <meta property="og:type" content="website"></meta>
+        <meta property="og:url" content="https://whats-trending.vercel.app"></meta>
+        <meta property="og:title" content="Trendzy: Top Stories & News - Stay Updated Worldwide"></meta>
+        <meta property="og:description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
+        <meta property="og:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
+
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta property="twitter:title" content="Trendzy: Top Stories & News - Stay Updated Worldwide"></meta>
+        <meta property="twitter:description" content="Discover trending topics, news, and stories from around the world with What's Trending – your go-to source for real-time updates and insights."></meta>
+        <meta property="twitter:image" content="https://uwyebjbwfzfrdwcyusnp.supabase.co/storage/v1/object/public/static/preview.png?t=2023-04-24T11%3A30%3A38.784Z"></meta>
+        <link rel="canonical" href="https://whats-trending.vercel.app/" />
+
+        <meta name="google-site-verification" content="plNjT22lnKm9msdZWw8yPXGwPh81snTSfML-zPgRLqQ" />
+
+        <meta charSet="utf-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+          />
+          <link rel="manifest" href="/manifest.json" />
+          <link
+            href="/ios/16.png"
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+          />
+          <link
+            href="/ios/32.png"
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+          />
+          <link rel="apple-touch-icon" href="/apple-icon.png"></link>
+          <meta name="theme-color" content="#317EFB" />
+          
+          <meta name="description" content="Trendzy: Top Stories & News - Stay Updated Worldwide" />
+          <link rel="icon" href="/favicon.ico" />
+      </Head>
 
       <main className={styles.main}>
-       <Typography level="h3">What&apos;s Trending in US
-        <Tooltip title="Support for other geo(s) coming soon" enterTouchDelay={0} sx={{ marginBottom: '2rem' }}>
-          <IconButton size='small'>
-            <InfoOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-      </Typography>
+       <Heading />
        <Divider sx={{ margin: 1 }}/>
        <TrendTabs posts={data} />
       </main>
 
       <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://omkarkeluskar.com"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by
           <span className={styles.logo}>
-            <Image src="/logo.svg" alt="ok logo" width={72} height={16} />
+            <Image src="/logo.svg" alt="ok logo" width={24} height={24} />
           </span>
         </a>
       </footer>

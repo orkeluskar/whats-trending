@@ -1,4 +1,5 @@
 import SpotifyWebApi from 'spotify-web-api-node'
+import CONSTANTS from '../utils/constants';
 
 export default class Spotify {
     client: SpotifyWebApi
@@ -17,7 +18,8 @@ export default class Spotify {
         return {
             name: `${item.track.id}_${item.track.name}`,
             volume: `#${index + 1}`,
-            source: 5
+            source: CONSTANTS.SOURCE.SPOTIFY,
+            media_url: item.track.album.images[0].url
         }
     }
 
@@ -28,7 +30,7 @@ export default class Spotify {
             await this.refreshToken()
         }
         const { body } = await this.client.getPlaylist(playListId, {
-            fields: 'tracks.items(track(name,id))'
+            fields: 'tracks.items(track(name,id,album(images)))'
         })
         return body.tracks.items.map(this.formatResponse)
     }

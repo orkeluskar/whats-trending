@@ -1,28 +1,20 @@
-/** @type {import('next').NextConfig} */
 
 const runtimeCaching = require('next-pwa/cache')
 
-// const nextConfig = withPWA({
-//   pwa: {
-//     // reactStrictMode: true,
-//     // swcMinify: true,
-//     dest: 'public',
-//     runtimeCaching,
-//   },
-// })
-
-// module.exports = withPWA({
-//   pwa: {
-//     dest: 'public',
-//     runtimeCaching,
-//   },
-// })
-
-
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['dnm.nflximg.net', 'i.scdn.co'],
+  }
+}
 
 const withPWA = require('next-pwa')({
   dest: 'public',
-  runtimeCaching
+  runtimeCaching,
 })
 
-module.exports = withPWA()
+module.exports = withPWA({
+  ...nextConfig
+})
