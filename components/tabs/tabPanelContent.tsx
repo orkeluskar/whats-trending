@@ -63,6 +63,7 @@ export default function TabPanelContent({ posts, title, getURL, getName }: TabPa
                                                 width={isDesktop ? 90: 56.25}
                                                 src={post.media_url}
                                                 alt={`Image related to ${getName(post.name)}`}
+                                                loading="lazy"
                                             />
                                             </AspectRatio>
                                         </CardOverflow>

@@ -8,12 +8,15 @@ export class Reddit {
 
     private formatResponse (item: any) {
         const data = item.data
-        const { subreddit, id, title } = data
+        const { subreddit, id, title, thumbnail } = data
         const formattedTitle = title.replaceAll(' ', '_')
+        const media_url = !thumbnail?.includes('http') || thumbnail?.includes('external-preview.redd.it') ? null : thumbnail
+
         return {
             name: `/r/${subreddit}/comments/${id}/${formattedTitle}`,
             volume: data.score?.toLocaleString(),
-            source: CONSTANTS.SOURCE.REDDIT
+            source: CONSTANTS.SOURCE.REDDIT,
+            media_url
         }
     }
 

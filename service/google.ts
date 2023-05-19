@@ -23,7 +23,8 @@ function stripRequiredFields(item: any, index: number): any {
     return {
         name: item.snippet.title,
         volume: getVolume(item, index + 1),
-        source: 3
+        source: CONSTANTS.SOURCE.YOUTUBE,
+        media_url: item.snippet.thumbnails.medium.url
     }
 }
 
