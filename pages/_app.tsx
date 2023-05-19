@@ -5,6 +5,7 @@ import { experimental_extendTheme as extendMuiTheme } from '@mui/material/styles
 import {
   extendTheme as extendJoyTheme,
   CssVarsProvider,
+  getInitColorSchemeScript
 } from '@mui/joy/styles';
 
 const muiTheme = extendMuiTheme()
@@ -18,6 +19,7 @@ const theme = deepmerge(muiTheme, joyTheme);
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CssVarsProvider theme={theme} defaultMode={'dark'}>
+      {getInitColorSchemeScript()}
       <Component {...pageProps} />
     </CssVarsProvider>
   )
