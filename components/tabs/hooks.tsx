@@ -43,7 +43,7 @@ const usePostData = (posts: Post[]) => {
             case CONSTANTS.SOURCE.GOOGLE:
                 return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`;
             case CONSTANTS.SOURCE.YOUTUBE:
-                return `https://www.youtube.com/results?search_query=${name}`;
+                return post.post_url ?? `https://www.youtube.com/results?search_query=${name}`;
             case CONSTANTS.SOURCE.REDDIT:
                 return `https://www.reddit.com${post.name}`;
             case CONSTANTS.SOURCE.SPOTIFY:
