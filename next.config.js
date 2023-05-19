@@ -6,7 +6,14 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['dnm.nflximg.net', 'i.scdn.co'],
+    domains: [
+      'dnm.nflximg.net',
+      'i.scdn.co',
+      'i.ytimg.com',
+      'a.thumbs.redditmedia.com',
+      'b.thumbs.redditmedia.com',
+      'external-preview.redd.it'
+    ],
   }
 }
 
