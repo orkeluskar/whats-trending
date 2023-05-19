@@ -56,7 +56,7 @@ export default function TabPanelContent({ posts, title, getURL, getName }: TabPa
                                     sx={{ minWidth: isDesktop ? 350 : '75vw'  }}
                                 >
                                     {post?.media_url && 
-                                        <CardOverflow>
+                                        <CardOverflow sx={{ display: 'flex', alignItems: 'center' }}>
                                             <AspectRatio ratio="9 / 16" sx={{ width: isDesktop ? 90: 56.25 }}>
                                             <Image
                                                 height={isDesktop ? 160 : 100}
