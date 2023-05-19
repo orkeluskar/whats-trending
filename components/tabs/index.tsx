@@ -26,15 +26,26 @@ export default function TrendTabs(props: TrendTabsProps) {
 
     return (
         <Tabs aria-label="Icon tabs" defaultValue={0} size='sm' sx={{ width: isDesktop ? '75vw' : '90vw' }}>
-            <TabList size='sm'>
+            <TabList
+                size='lg'
+                sx={{ 
+                    bottom: 0,
+                    zIndex: 2,
+                    position: isDesktop ? 'static' : 'fixed',
+                    marginLeft: isDesktop ? 'inherit': '-5vw',
+                    width: isDesktop ? '75vw' : '100vw',
+                    borderRadius: isDesktop ? '0.5rem': 0
+                }}
+            >
                 {tabData.map((tab, index) => (
-                    <Tab key={index}>
+                    <Tab key={index} orientation="vertical">
                         <ListItemDecorator>
                             {tab.icon}
                         </ListItemDecorator>
                     </Tab>
                 ))}
             </TabList>
+
             <TabPanel value={0}>
                 <TabPanelContent posts={twitterPosts} title='Trending tweets' getURL={getURL} getName={p => p} />
             </TabPanel>

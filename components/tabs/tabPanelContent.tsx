@@ -1,8 +1,8 @@
-import { Badge, Card, CardContent, CardOverflow, Divider, Link, List, ListItem, Typography, Slider, Box } from "@mui/joy";
+import { Badge, Card, CardContent, CardOverflow, Link, List, ListItem, Typography, Slider, Box } from "@mui/joy";
 import Image from 'next/image'
 import AspectRatio from '@mui/joy/AspectRatio'
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 type TabPanelContentProps = {
     posts: any[],
@@ -44,7 +44,6 @@ export default function TabPanelContent({ posts, title, getURL, getName }: TabPa
                 <Typography level="h5" textAlign={'center'} alignItems='center'>{title}</Typography>
                 {hasMultipleTypes && <Slider defaultValue={0} max={1} marks={marks} sx={{ width: 100 }} onChangeCommitted={handleChange} />}
             </Box>
-            <Divider sx={{ margin: 1 }} />
             
             <List aria-labelledby="basic-list-demo" >
                 {posts.map((post: any) => (
