@@ -1,8 +1,8 @@
 /** @type {import('next-sitemap').IConfig} */
 const siteMapConfig = {
-  siteUrl: 'https://whats-trending.vercel.app/',
+  siteUrl: 'https://trendzy.app/',
   generateRobotsTxt: true,
-  changefreq: 'daily',
+  changefreq: 'hourly',
   priority: 0.7,
   sitemapSize: 5000,
   exclude: ['/404']

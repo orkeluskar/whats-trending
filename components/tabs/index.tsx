@@ -7,6 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import TabPanelContent from './tabPanelContent';
 import usePostData from './hooks';
 import CONSTANTS from '../../utils/constants';
+import { useEffect, useState } from 'react';
 
 export type TrendTabsProps = {
     posts: any[]
@@ -22,7 +23,18 @@ export default function TrendTabs(props: TrendTabsProps) {
     const youtubePosts = postGroups[CONSTANTS.SOURCE.YOUTUBE];
     const redditPosts = postGroups[CONSTANTS.SOURCE.REDDIT];
     const spotifyTracks = postGroups[CONSTANTS.SOURCE.SPOTIFY];
-    const netflixTops = postGroups[CONSTANTS.SOURCE.NETFLIX]
+    const netflixTops = postGroups[CONSTANTS.SOURCE.NETFLIX];
+
+    const [isAppMode, setIsAppMode] = useState(false);
+    useEffect(() => {
+        // Check if the app is running in standalone mode on iOS
+        const isRunningInAppMode = () =>
+        //@ts-ignore
+          (window.navigator.standalone !== undefined && window.navigator.standalone) ||
+          (window.matchMedia('(display-mode: standalone)').matches);
+    
+        setIsAppMode(isRunningInAppMode());
+    }, []);
 
     return (
         <Tabs aria-label="Icon tabs" defaultValue={0} size='sm' sx={{ width: isDesktop ? '75vw' : '90vw' }}>
@@ -34,7 +46,8 @@ export default function TrendTabs(props: TrendTabsProps) {
                     position: isDesktop ? 'static' : 'fixed',
                     marginLeft: isDesktop ? 'inherit': '-5vw',
                     width: isDesktop ? '75vw' : '100vw',
-                    borderRadius: isDesktop ? '0.5rem': 0
+                    borderRadius: isDesktop ? '0.5rem': 0,
+                    paddingBottom: isAppMode ? '1rem' : 0
                 }}
             >
                 {tabData.map((tab, index) => (

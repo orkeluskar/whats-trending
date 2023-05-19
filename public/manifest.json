@@ -2,7 +2,7 @@
   "name": "Trendzy",
   "short_name": "Trendzy",
   "theme_color": "#ffffff",
-  "background_color": "#004740",
+  "background_color": "#ffffff",
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/",
