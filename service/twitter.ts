@@ -69,7 +69,8 @@ export async function searchTweetsWithMedia(queries: string[]) {
                 params: {
                     q,
                     count: 1,
-                    'result_type': 'popular'
+                    'result_type': 'popular',
+                    'lang': 'en'
                 }
             });
             return response.data.statuses[0]?.entities?.media?.at(0);
@@ -89,7 +90,7 @@ export async function getTrending() {
     if (medias.length === 0) return response
     return medias.map((media: any, index) => ({
         ...response[index],
-        post_url: media?.url ?? getURL(response[index]),
+        post_url: media?.expanded_url ?? getURL(response[index]),
         media_url: media?.media_url_https
     }))
 }
