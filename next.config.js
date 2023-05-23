@@ -10,6 +10,7 @@ const nextConfig = {
       'dnm.nflximg.net',
       'i.scdn.co',
       'i.ytimg.com',
+      'pbs.twimg.com',
       'a.thumbs.redditmedia.com',
       'b.thumbs.redditmedia.com',
       'external-preview.redd.it'

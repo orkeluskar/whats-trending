@@ -1,4 +1,4 @@
-import { getTwitterTrends } from "./twitter";
+import { getTrending } from "./twitter";
 import { getGoogleTrends, getYoutubeTrends } from "./google";
 import supabaseClient from "./supabase";
 import redditClient from "./reddit";
@@ -23,7 +23,7 @@ export async function saveTrends() {
     netflixFilmTrends,
     netflixShowTrends
   ] = await Promise.all([
-    getTwitterTrends(),
+    getTrending(),
     getGoogleTrends(),
     getYoutubeTrends(),
     redditClient.getTrendingSearches(),

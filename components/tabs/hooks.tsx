@@ -39,7 +39,7 @@ const usePostData = (posts: Post[]) => {
         const name = encodeURIComponent(post.name);
         switch (post.source) {
             case CONSTANTS.SOURCE.TWITTER:
-                return `https://twitter.com/search?q=${name}`;
+                return post.post_url;
             case CONSTANTS.SOURCE.GOOGLE:
                 return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`;
             case CONSTANTS.SOURCE.YOUTUBE:
