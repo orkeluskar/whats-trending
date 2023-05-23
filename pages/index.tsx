@@ -52,6 +52,9 @@ const Home = (props : HomePageType) => {
 
         <meta name="google-site-verification" content="plNjT22lnKm9msdZWw8yPXGwPh81snTSfML-zPgRLqQ" />
 
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover, width=device-width"></meta>
+        <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></meta>
         <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
