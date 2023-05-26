@@ -40,7 +40,8 @@ function removeDuplicatesByProperty<T>(list: T[], property: keyof T): T[] {
 }
 
 function getURL(item: any) {
-    return `https://twitter.com/search?q=${item.name}`
+    const query = encodeURIComponent(item.name)
+    return `https://twitter.com/search?q=${query}`
 }
 
 export async function getTwitterTrends(location = US_WOEID, exclude = false) {
