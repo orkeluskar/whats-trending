@@ -15,7 +15,6 @@ const spotifyService = new Spotify(_spotifyClient)
 
 export async function saveTrends() {
   const [
-    twitterTrends,
     googleTrends,
     youtubeTrends,
     redditTrends,
@@ -23,7 +22,6 @@ export async function saveTrends() {
     netflixFilmTrends,
     netflixShowTrends
   ] = await Promise.all([
-    getTrending(),
     getGoogleTrends(),
     getYoutubeTrends(),
     redditClient.getTrendingSearches(),
@@ -41,7 +39,6 @@ export async function saveTrends() {
   const { data, error } = await supabaseClient
     .from("posts")
     .insert([
-      ...twitterTrends,
       ...googleTrends,
       ...youtubeTrends,
       ...redditTrends,

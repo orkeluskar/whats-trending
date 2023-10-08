@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import TwitterIcon from '@mui/icons-material/Twitter'
 import YouTubeIcon from '@mui/icons-material/YouTube'
 import RedditIcon from '@mui/icons-material/Reddit';
 import GoogleLogo from '../../public/google-logo.svg'
@@ -19,7 +18,6 @@ type Post = {
 
 const usePostData = (posts: Post[]) => {
     const tabData = [
-        { icon: <TwitterIcon sx={{ color: '#1DA1F2' }} />, alt: 'Twitter logo' },
         { icon: <Image height={15} width={15} src={GoogleLogo} />, alt: 'Google logo' },
         { icon: <YouTubeIcon sx={{ color: 'red' }} />, alt: 'YouTube logo' },
         { icon: <RedditIcon sx={{ color: 'red' }} />, alt: 'Reddit logo' },
@@ -38,8 +36,6 @@ const usePostData = (posts: Post[]) => {
     const getURL = (post: Post) => {
         const name = encodeURIComponent(post.name);
         switch (post.source) {
-            case CONSTANTS.SOURCE.TWITTER:
-                return post.post_url;
             case CONSTANTS.SOURCE.GOOGLE:
                 return `https://trends.google.com/trends/trendingsearches/daily?geo=US#${name}`;
             case CONSTANTS.SOURCE.YOUTUBE:
