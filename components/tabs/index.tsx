@@ -18,21 +18,20 @@ export default function TrendTabs(props: TrendTabsProps) {
     const isDesktop = useMediaQuery('(min-width:500px)');
 
     // Then you can access specific post groups like this:
-    const twitterPosts = postGroups[CONSTANTS.SOURCE.TWITTER];
     const googlePosts = postGroups[CONSTANTS.SOURCE.GOOGLE];
     const youtubePosts = postGroups[CONSTANTS.SOURCE.YOUTUBE];
     const redditPosts = postGroups[CONSTANTS.SOURCE.REDDIT];
     const spotifyTracks = postGroups[CONSTANTS.SOURCE.SPOTIFY];
-    const netflixTops = postGroups[CONSTANTS.SOURCE.NETFLIX];
+    const netflixTops = postGroups[CONSTANTS.SOURCE.NETFLIX] || [];
 
     const [isAppMode, setIsAppMode] = useState(false);
     useEffect(() => {
         // Check if the app is running in standalone mode on iOS
         const isRunningInAppMode = () =>
-        //@ts-ignore
-          (window.navigator.standalone !== undefined && window.navigator.standalone) ||
-          (window.matchMedia('(display-mode: standalone)').matches);
-    
+            //@ts-ignore
+            (window.navigator.standalone !== undefined && window.navigator.standalone) ||
+            (window.matchMedia('(display-mode: standalone)').matches);
+
         setIsAppMode(isRunningInAppMode());
     }, []);
 
@@ -40,13 +39,13 @@ export default function TrendTabs(props: TrendTabsProps) {
         <Tabs aria-label="Icon tabs" defaultValue={0} size='sm' sx={{ width: isDesktop ? '75vw' : '90vw' }}>
             <TabList
                 size='lg'
-                sx={{ 
+                sx={{
                     bottom: 0,
                     zIndex: 2,
                     position: isDesktop ? 'static' : 'fixed',
-                    marginLeft: isDesktop ? 'inherit': '-5vw',
+                    marginLeft: isDesktop ? 'inherit' : '-5vw',
                     width: isDesktop ? '75vw' : '100vw',
-                    borderRadius: isDesktop ? '0.5rem': 0,
+                    borderRadius: isDesktop ? '0.5rem' : 0,
                     paddingBottom: isAppMode ? '1rem' : 0
                 }}
             >
@@ -60,24 +59,21 @@ export default function TrendTabs(props: TrendTabsProps) {
             </TabList>
 
             <TabPanel value={0}>
-                <TabPanelContent posts={twitterPosts} title='Trending tweets' getURL={getURL} getName={p => p} />
-            </TabPanel>
-            <TabPanel value={1}>
                 <TabPanelContent posts={googlePosts} title='Google daily search trends' getURL={getURL} getName={p => p} />
             </TabPanel>
-            <TabPanel value={2}>
+            <TabPanel value={1}>
                 <TabPanelContent posts={youtubePosts} title='Youtube Trending videos' getURL={getURL} getName={p => p} />
             </TabPanel>
-            <TabPanel value={3}>
+            <TabPanel value={2}>
                 <TabPanelContent posts={redditPosts} title='Reddit hot posts' getURL={getURL} getName={getName} />
             </TabPanel>
-            <TabPanel value={4}>
+            <TabPanel value={3}>
                 <TabPanelContent posts={spotifyTracks} title='Spotify top hits' getURL={getURL} getName={getTrackName} />
             </TabPanel>
-            <TabPanel value={5}>
+            <TabPanel value={4}>
                 <TabPanelContent posts={netflixTops} title='Netflix top' getURL={getURL} getName={p => p} />
             </TabPanel>
-            <TabPanel value={6}>
+            <TabPanel value={5}>
                 <Typography level="h5" textAlign={'center'}>TikTok trends</Typography>
                 <Divider sx={{ margin: 1 }} />
                 <Typography>Coming Soon!</Typography>
