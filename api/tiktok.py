@@ -3,7 +3,7 @@ from TikTokApi import TikTokApi
 
 from sanic import Sanic
 from sanic.response import json
-app = Sanic(name='tiktok')
+app = Sanic('tiktok')
 
 
 ms_token = ["EDJtQ0264RFY9EweP3N6DC_9U-DXvKaZ8npVRmkWVwLolqspuXQk76hkes1UWeKL3xFIydPIjIxRfK91UnOycVTGmy22VVRmASFuR_mTcBcVSqO1nHiIK7piECRybru-SzJsCLpV_UdLrrJR",
@@ -31,3 +31,7 @@ async def trending_videos():
 async def index(request, path=""):
     videos = await trending_videos()
     return json(videos)
+
+
+if __name__ == '__main__':
+    app.run()
