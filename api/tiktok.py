@@ -3,7 +3,7 @@ from TikTokApi import TikTokApi
 
 from sanic import Sanic
 from sanic.response import json
-app = Sanic()
+app = Sanic(name='tiktok')
 
 
 ms_token = ["EDJtQ0264RFY9EweP3N6DC_9U-DXvKaZ8npVRmkWVwLolqspuXQk76hkes1UWeKL3xFIydPIjIxRfK91UnOycVTGmy22VVRmASFuR_mTcBcVSqO1nHiIK7piECRybru-SzJsCLpV_UdLrrJR",
