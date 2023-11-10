@@ -29,4 +29,5 @@ async def trending_videos():
  
 @app.route('/')
 async def index(request, path=""):
-    return json(asyncio.run(trending_videos()))
+    videos = await trending_videos()
+    return json(videos)
