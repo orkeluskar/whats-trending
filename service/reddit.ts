@@ -34,8 +34,13 @@ export class Reddit {
       },
     };
 
-    const { data } = await axios.get(url, config);
-    return data?.data?.children?.map(this.formatResponse);
+    try {
+      const { data } = await axios.get(url, config);
+      return data?.data?.children?.map(this.formatResponse);
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
   }
 }
 
