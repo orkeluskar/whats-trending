@@ -38,7 +38,7 @@ export async function saveTrends(tweetTrends = false) {
     .lte("created_at", new Date().toISOString());
 
   const { data, error } = await supabaseClient.from("posts").insert([
-    ...googleTrends.map((i) => {
+    ...googleTrends.map((i: any[]) => {
       const elem = JSON.parse(JSON.stringify(i));
       delete elem?.articles;
       return elem;

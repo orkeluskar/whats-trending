@@ -109,6 +109,7 @@ const clientSecret = process.env.TWITTER_CLIENT_SECRET;
 export async function sendTweet(tweets: any) {
   try {
     const client = new TwitterApi({
+      //@ts-ignore
       appKey,
       appSecret,
       accessToken,

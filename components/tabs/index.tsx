@@ -35,8 +35,9 @@ export default function TrendTabs(props: TrendTabsProps) {
     // Check if the app is running in standalone mode on iOS
     const isRunningInAppMode = () =>
       //@ts-ignore
-      (window.navigator.standalone !== undefined &&
-        window.navigator.standalone) ||
+      (window?.navigator?.standalone !== undefined &&
+        //@ts-ignore
+        window?.navigator?.standalone) ||
       window.matchMedia("(display-mode: standalone)").matches;
 
     setIsAppMode(isRunningInAppMode());

@@ -7,6 +7,10 @@ export async function testOpenai({
   googleTrends,
   youtubeTrends,
   spotifyTrends,
+}: {
+  googleTrends: any[];
+  youtubeTrends: any[];
+  spotifyTrends: any[];
 }) {
   const completion = await openai.chat.completions.create({
     messages: [
