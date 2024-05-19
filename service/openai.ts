@@ -33,22 +33,23 @@ export async function testOpenai({
         )}`,
       },
       {
-        role: "assistant",
-        content: "What are my duties?",
-      },
-      {
         role: "user",
-        content: `Write a crafty tweet thread to highlight the
-          top trending posts. Also can you add the link to https://trendzy.app
-          in the last thread? Generate a JSON response.
-          Dont have any links in the first tweet and keep it like a TL;DR (too long didnt read). Rest
-          of the tweets can have links, if any. Ignore any previous context in response`,
+        content: `
+          Write a crafty tweet thread to garner most attention for the trending posts.
+          Group posts by categories: Sports, Celebrity, Music, World News etc.
+          Explain each tweet in thread with 250 characters.
+          Add the link to https://trendzy.app in the last thread.
+          Generate a JSON response something like tweets: string[], where each tweet is a string.
+          No links in the first tweet and keep the first tweet like a TL;DR (too long didnt read) or a summary with 280 characters.
+          Rest of the tweets can have links and images, if any.
+          Include hashtags wherever possible.
+          Ignore any previous context in response.`,
       },
     ],
     response_format: {
       type: "json_object",
     },
-    model: "gpt-4-turbo",
+    model: "gpt-4o",
   });
 
   const res = JSON.parse(completion.choices[0].message.content as string);

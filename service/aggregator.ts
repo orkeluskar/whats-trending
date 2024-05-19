@@ -14,7 +14,7 @@ const _spotifyClient = new SpotifyWebApi({
 
 const spotifyService = new Spotify(_spotifyClient);
 
-export async function saveTrends() {
+export async function saveTrends(tweetTrends = false) {
   const [
     googleTrends,
     youtubeTrends,
@@ -50,11 +50,13 @@ export async function saveTrends() {
     ...netflixShowTrends,
   ]);
 
-  const tweets = await testOpenai({
-    googleTrends,
-    youtubeTrends,
-    spotifyTrends,
-  });
-  await sendTweet(tweets);
+  if (tweetTrends) {
+    const tweets = await testOpenai({
+      googleTrends,
+      youtubeTrends,
+      spotifyTrends,
+    });
+    await sendTweet(tweets);
+  }
   return { data, error };
 }
